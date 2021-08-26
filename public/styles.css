@@ -1,0 +1,30 @@
+.body {
+  height: 100vh;
+  padding: 150px 0 70px 0;
+}
+
+/*HEADER */
+.navbar-brand {
+  margin: 10px 10px 10px 100px;
+}
+.ul-menu {
+  margin-left: 80%;
+}
+
+/* FOOTER */
+
+#footer{
+  padding-top: 3%;
+  text-align: center;
+  background-color: rgb(5, 9, 12);
+  color: #ffffff;
+  margin-bottom: 1%;
+}
+
+.div h1 {
+  padding: 100px;
+  margin: 100px;
+}
+
+
+
