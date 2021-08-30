@@ -1,13 +1,15 @@
-import AddEntrada from "../Components/addEntrada";
-import Footer from "../Components/footer";
 import Header from "../Components/header";
+// import AddEntrada from "../Components/Registros/addEntrada";
+import Footer from "../Components/footer";
+import Main from "../Components/main";
+
 
 
 
 function Home() {
     return <div>
         <Header />
-        <AddEntrada />
+        <Main />
         <Footer />
     </div>;
 }

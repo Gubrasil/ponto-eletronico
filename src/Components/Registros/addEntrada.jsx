@@ -1,5 +1,7 @@
-import React from 'react';
-import firebase from '../config/firebase';
+import React, { useState } from 'react';
+import {Redirect}  from 'react-router-dom';
+
+import firebase from '../../Config/firebase';
 
 
 function AddEntrada() {
@@ -7,21 +9,23 @@ function AddEntrada() {
     const nomeEmpresa = "Mentoria Conquiste Sua Vaga"
     const nomeFuncionario = "Aluno da Mentoria Conquiste Sua Vaga"
     const db = firebase.firestore();
-    const HoraEntrada = " ";
     const inicioIntervalohorahoraEntrada = "";
-    const telefone = "";
+    const fimIntervalo = "";
     const horaSaida = "";
-    const horasTrabalhadas = "";
-
-      
+    const horasTrabalhadas = "";      
     const data = new Date().toLocaleDateString('pt-BR', {
       day: 'numeric',
       month: '2-digit',
       year: 'numeric',
+    })
+
+    const HoraEntrada = new Date().toLocaleDateString('pt-BR', {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
     })
+
+    const [sucesso, setSucesso] = useState('N');
   
     function registraEntrada() {
             db.collection('pontoEletronico').add({
@@ -30,15 +34,15 @@ function AddEntrada() {
                 data: data,
                 Hora_entrada: HoraEntrada,
                 Inicio_intervalo: inicioIntervalohorahoraEntrada,
-                Fim_intervalo: telefone,
+                Fim_intervalo: fimIntervalo,
                 Hora_saida: horaSaida,
                 Horas_trabalhadas: horasTrabalhadas
             }).then(async() => {
-                // setSucesso('S');
+                 setSucesso('S');
                 // await CriaLogin();
             }).catch((erro) => {
                 // setMensagem(erro);
-                // setSucesso('N');
+                 setSucesso('N');
             })
         }  
   
@@ -47,12 +51,10 @@ function AddEntrada() {
     }
     
     return (<section>
-      <div>
-        <h1> {data} </h1>
-      </div>
       <div className="text-center">
         <button onClick={registraEntrada} className="btn btn-primary" type="button">Entrada</button>
-        <button onClick={registraSaida} className="btn btn-primary" type="button">Saida</button>
+        {sucesso === 'S' ? <Redirect to='/' /> : null}
+        {/* <button onClick={registraSaida} className="btn btn-primary" type="button">Saida</button> */}
       </div>
     </section>
     )
